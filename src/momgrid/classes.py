@@ -32,6 +32,7 @@ KNOWN_GRIDS = [
     "om4_nonsym",
     "esm4_nonsym",
     "om5",
+    "om5_nonsym",
     "om5_16",
     "om5_16_nonsym",
     "nwa12",
@@ -589,11 +590,12 @@ class Gridset:
             self.model = "esm4_nonsym"
             self._periodic = True
 
-        elif any(
-            x in [(1161, 1440), (1161, 1441), (1162, 1440), (1162, 1441)]
-            for x in self.grid
-        ):
+        elif any(x in [(1161, 1441), (1162, 1440), (1162, 1441)] for x in self.grid):
             self.model = "om5"
+            self._periodic = True
+
+        elif any(x in [(1161, 1440)] for x in self.grid):
+            self.model = "om5_nonsym"
             self._periodic = True
 
         elif any(
